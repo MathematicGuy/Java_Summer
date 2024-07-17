@@ -1,0 +1,29 @@
+### Find by id
+GET http://localhost:8080/api/runs/3
+
+<> 2024-07-18T055456.404.json
+<> 2024-07-18T055147.404.json
+<> 2024-07-18T055136.200.json
+
+### Find by all id
+GET http://localhost:8080/api/runs
+
+<> 2024-07-18T055456.200.json
+<> 2024-07-18T055114.200.json
+<> 2024-07-18T055032.200.json
+
+### Find by id that doesnt't exist
+GET http://localhost:8080/api/runs/696
+
+### Create new Run with invalid date (CompletedOn is before startedOn)
+POST http://localhost:8080/api/runs/create
+Content-Type: application/json
+
+{
+  "id": 4,
+  "title": "Fourth Run",
+  "startedOn": "2030-01-03T12:00:00",
+  "completedOn": "2024-01-03T13:00:00",
+  "kilometers": 20,
+  "location": "OUTDOOR"
+}
