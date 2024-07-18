@@ -27,3 +27,16 @@ Content-Type: application/json
   "kilometers": 20,
   "location": "OUTDOOR"
 }
+
+### Create Object with Blank Title
+POST http://localhost:8080/api/runs/create
+Content-Type: application/json
+
+{
+  "id": 13,
+  "title": "",
+  "startedOn": "2024-01-03T12:00:00",
+  "completedOn": "2030-01-03T13:00:00",
+  "kilometers": 20,
+  "location": "OUTDOOR"
+}

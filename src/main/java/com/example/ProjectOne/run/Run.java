@@ -21,6 +21,9 @@ public record Run(
         if (completedOn != null && !completedOn.isAfter(startedOn)) {
             throw new IllegalArgumentException("Completed date must be after started date");
         }
+        if (title.isBlank()){
+            throw new IllegalArgumentException("Title must not be blank");
+        }
     }
 }
 
