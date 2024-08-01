@@ -1,0 +1,16 @@
+# using docker we don't need to set up db in application.properties
+version: '3.7'
+# Act like a DBContext
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      POSTGRES_DB: ProjectOne
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: cmcuni
+      POSTGRES_HOST_AUTH_METHOD: trust
+
+    ports:
+      - '5432:5432' # docker host port : container port
+#    volumes:
+#       - postgres-data:/var/lib/postgresql/data

@@ -5,7 +5,7 @@ GET http://localhost:8080/api/runs/3
 <> 2024-07-18T055147.404.json
 <> 2024-07-18T055136.200.json
 
-### Find by all id
+### Find all
 GET http://localhost:8080/api/runs
 
 <> 2024-07-18T055456.200.json
@@ -14,6 +14,19 @@ GET http://localhost:8080/api/runs
 
 ### Find by id that doesnt't exist
 GET http://localhost:8080/api/runs/696
+
+### Create a new Valid Run
+POST http://localhost:8080/api/runs/create
+Content-Type: application/json
+
+{
+  "id": 15,
+  "title": "13th Run",
+  "startedOn": "2004-07-13T12:00:00.000",
+  "completedOn": "2004-07-30T13:00:00.000",
+  "kilometers": 25,
+  "location": "INDOOR"
+}
 
 ### Create new Run with invalid date (CompletedOn is before startedOn)
 POST http://localhost:8080/api/runs/create
@@ -25,7 +38,8 @@ Content-Type: application/json
   "startedOn": "2030-01-03T12:00:00",
   "completedOn": "2024-01-03T13:00:00",
   "kilometers": 20,
-  "location": "OUTDOOR"
+  "location": "OUTDOOR",
+  "version": 1
 }
 
 ### Create Object with Blank Title
@@ -35,8 +49,35 @@ Content-Type: application/json
 {
   "id": 13,
   "title": "",
-  "startedOn": "2024-01-03T12:00:00",
-  "completedOn": "2030-01-03T13:00:00",
+  "startedOn": "2004-07-13T12:00:00.000",
+  "completedOn": "2004-07-30T13:00:00.000",
   "kilometers": 20,
   "location": "OUTDOOR"
 }
+
+### Update Run
+PUT http://localhost:8080/api/runs/update
+Content-Type: application/json
+
+{
+  "id": 4,
+  "title": "Fünfzehn Run",
+  "startedOn": "2004-07-13T12:00:00.000",
+  "completedOn": "2004-07-30T13:00:00.000",
+  "kilometers": 123,
+  "location": "OUTDOOR"
+}
+
+### Delete Run by id
+DELETE http://localhost:8080/api/runs/delete4
+
+### Check All Runs
+GET http://localhost:8080/api/runs
+
+### Count all runs
+GET http://localhost:8080/api/runs/count
+
+### Find runs by location
+GET http://localhost:8080/api/runs/location/INDOOR
+
+

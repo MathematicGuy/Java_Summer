@@ -1,9 +1,10 @@
-package com.example.ProjectOne.run;
+ package com.example.ProjectOne.run;
 
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,10 +13,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/runs") // map to /api/runs (like os.chdir in python)
 public class RunController {
+
+    @Autowired
     private final RunRepository runRepository;
 
     public RunController(RunRepository runRepository){
-        this.runRepository = runRepository; // create new instance of RunRepository
+        this.runRepository = runRepository;
     }
 
     @GetMapping("")
@@ -36,20 +39,35 @@ public class RunController {
     // post
     @ResponseStatus(HttpStatus.CREATED) // use to debug. check
     @PostMapping("/create")
-    void create(@Valid @RequestBody Run run){
-        runRepository.create(run);
+    public ResponseEntity<Run> createRun(@RequestBody Run run){
+        runRepository.save(run);
+        return ResponseEntity.status(HttpStatus.CREATED).body(run);
     }
 
     // put
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping("/update{id}")
-    void update(@Valid @RequestBody Run run, @PathVariable Integer id){
-        runRepository.update(run, id);
+    @PutMapping("/update")
+    void update(@Valid @RequestBody Run run)
+    {
+        runRepository.save(run);
     }
 
     // delete
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/delete{id}")
     void delete(@PathVariable Integer id){
-        runRepository.delete(id);
+        runRepository.delete(runRepository.findById(id).get());
+    }
+
+    @GetMapping("/count") // count number of runs.
+    //! If use PutMapping this will return a empty string ""
+    public long count(){
+        return runRepository.count();
+    }
+
+    @GetMapping("location/{location}")
+    List<Run> findAllByLocation(@PathVariable String location){
+        return runRepository.findAllByLocation(location);
     }
 }
+;
