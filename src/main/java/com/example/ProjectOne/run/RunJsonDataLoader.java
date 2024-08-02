@@ -13,10 +13,10 @@ import java.io.InputStream;
 @Component
 public class RunJsonDataLoader implements CommandLineRunner{
     private static final Logger log = LoggerFactory.getLogger(RunJsonDataLoader.class);
-    private final JdbcClientRunRepository runRepository;
+    private final JdbcRunRepository runRepository;
     private final ObjectMapper objectMapper;
 
-    public RunJsonDataLoader(JdbcClientRunRepository runRepository, ObjectMapper objectMapper) {
+    public RunJsonDataLoader(JdbcRunRepository runRepository, ObjectMapper objectMapper) {
         this.runRepository = runRepository;
         this.objectMapper = objectMapper;
     }
@@ -33,6 +33,7 @@ public class RunJsonDataLoader implements CommandLineRunner{
                 log.error("Failed to load runs from JSON file", e);
             }
         } else {
+            System.out.println(runRepository.count());
             log.info("Not loading Runs from JSON file as there are already {} runs in the database", runRepository.count());
         }
     }

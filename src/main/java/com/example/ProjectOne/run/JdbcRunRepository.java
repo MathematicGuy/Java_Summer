@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class JdbcClientRunRepository {
-    private static final Logger log = LoggerFactory.getLogger(JdbcClientRunRepository.class);
+public class JdbcRunRepository {
+    private static final Logger log = LoggerFactory.getLogger(JdbcRunRepository.class);
     private final JdbcClient jdbcClient;
 
-    public JdbcClientRunRepository(JdbcClient jdbcClient) {
+    public JdbcRunRepository(JdbcClient jdbcClient) {
         this.jdbcClient = jdbcClient;
     }
 
@@ -32,7 +32,7 @@ public class JdbcClientRunRepository {
     }
 
     public void create(Run run) {
-        var create = jdbcClient.sql("INSERT INTO Run(id, title, started_on, completed_on, kilometers, location) VALUES (?, ?, ?, ?, ?, ?)")
+        var create = jdbcClient.sql("INSERT INTO Run(id, title, started_on, completed_on, kilometers, location, version) VALUES (?, ?, ?, ?, ?, ?)")
                 .params(List.of(run.id(), run.title(), run.startedOn(), run.completedOn(), run.kilometers(), run.location().toString()))
                 .update();
 

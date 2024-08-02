@@ -16,18 +16,14 @@ public record Run(
         @NotEmpty
         String title,
 
-//        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-
         LocalDateTime startedOn,
-//        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-
         LocalDateTime completedOn,
 
         @PositiveOrZero
         Integer kilometers,
         Location location,
 
-        @Version
+//        @Version
         Integer version
 ) {
     public Run {

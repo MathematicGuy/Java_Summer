@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,7 @@ public class RunController {
     public RunController(RunRepository runRepository){
         this.runRepository = runRepository;
     }
+
 
     @GetMapping("")
     List<Run> findAll(){
@@ -49,15 +51,26 @@ public class RunController {
     @PutMapping("/update")
     void update(@Valid @RequestBody Run run)
     {
-        runRepository.save(run);
+        if (runRepository.existsById(run.id())){
+            runRepository.save(run);
+            System.out.println("Update Successfully");
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The Object is not Exist. You Fool");
+        }
     }
 
     // delete
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/delete{id}")
     void delete(@PathVariable Integer id){
-        runRepository.delete(runRepository.findById(id).get());
-    }
+       if (runRepository.existsById(id)) {
+           runRepository.delete(runRepository.findById(id).get());
+       }
+       else{
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The Object is not Exist. You Fool");
+       }
+   }
 
     @GetMapping("/count") // count number of runs.
     //! If use PutMapping this will return a empty string ""
