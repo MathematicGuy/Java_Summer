@@ -1,0 +1,62 @@
+### Find all
+GET http://localhost:8080/api/runs
+
+### Create a new Valid Run
+POST http://localhost:8080/api/runs/create
+Content-Type: application/json
+
+{
+  "title": "3rd Run",
+  "startedOn": "2004-07-13T12:00:00.000",
+  "completedOn": "2004-07-30T13:00:00.000",
+  "kilometers": 25,
+  "location": "INDOOR"
+}
+
+### Create a new Valid Run
+POST http://localhost:8080/api/runs/create
+Content-Type: application/json
+
+{
+  "title": "4th Run",
+  "startedOn": "2005-08-15T10:00:00.000",
+  "completedOn": "2005-08-20T11:00:00.000",
+  "kilometers": 30,
+  "location": "OUTDOOR"
+}
+
+### Create a new Valid Run
+POST http://localhost:8080/api/runs/create
+Content-Type: application/json
+
+{
+  "title": "5th Run",
+  "startedOn": "2006-09-10T09:00:00.000",
+  "completedOn": "2006-09-25T10:00:00.000",
+  "kilometers": 35,
+  "location": "INDOOR"
+}
+
+### Create a new Valid Run
+POST http://localhost:8080/api/runs/create
+Content-Type: application/json
+
+{
+  "title": "6th Run",
+  "startedOn": "2007-10-05T08:00:00.000",
+  "completedOn": "2007-10-15T09:00:00.000",
+  "kilometers": 40,
+  "location": "OUTDOOR"
+}
+
+### Create a new Valid Run
+POST http://localhost:8080/api/runs/create
+Content-Type: application/json
+
+{
+  "title": "7th Run",
+  "startedOn": "2008-11-20T07:00:00.000",
+  "completedOn": "2008-11-30T08:00:00.000",
+  "kilometers": 45,
+  "location": "INDOOR"
+}

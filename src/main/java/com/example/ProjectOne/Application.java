@@ -23,22 +23,23 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@Bean
-	UserHttpClient userHttpClient(){
-		RestClient restClient = RestClient.create("https://jsonplaceholder.typicode.com/");
-		HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(RestClientAdapter.create(restClient)).build();
-		return factory.createClient(UserHttpClient.class);
-	}
 
-	@Bean
-	CommandLineRunner runner(UserRestClient client){
-		return args -> {
+//	@Bean
+//	UserHttpClient userHttpClient(){
+//		RestClient restClient = RestClient.create("https://jsonplaceholder.typicode.com/");
+//		HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(RestClientAdapter.create(restClient)).build();
+//		return factory.createClient(UserHttpClient.class);
+//	}
 
-			List<User> users = client.findAll();
-			System.out.println(users);
-
-			User user = client.findById(1);
-			System.out.println(user);
-		};
-	}
+//	@Bean
+//	CommandLineRunner runner(UserRestClient client){
+//		return args -> {
+//
+//			List<User> users = client.findAll();
+//			System.out.println(users);
+//
+//			User user = client.findById(1);
+//			System.out.println(user);
+//		};
+//	}
 }

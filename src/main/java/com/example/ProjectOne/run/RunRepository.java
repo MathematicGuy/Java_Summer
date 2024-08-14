@@ -8,6 +8,4 @@ import java.util.List;
 public interface RunRepository extends ListCrudRepository<Run, Integer> {
     @Query("SELECT * FROM Run WHERE location = :location")
     List<Run> findAllByLocation(String location);
-
-
 }

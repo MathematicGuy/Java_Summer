@@ -11,7 +11,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.ArrayList;
 import java.util.List;
-import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -37,16 +36,14 @@ class RunControllerTest {
                 null,
                 null,
                 10,
-                Location.OUTDOOR,
-                null));
+                Location.OUTDOOR));
 
         runs.add(new Run(2,
                 "Evening Run",
                 null,
                 null,
                 10,
-                Location.INDOOR,
-                null));
+                Location.INDOOR));
     }
 
 //    @Test

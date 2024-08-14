@@ -26,8 +26,7 @@ public class JdbcRunRepositoryTest {
                 LocalDateTime.now(),
                         LocalDateTime.now().plusMinutes(30),
                 10,
-                Location.OUTDOOR,
-                null));
+                Location.OUTDOOR));
 
         repository.create(
                 new Run(12,
@@ -35,8 +34,7 @@ public class JdbcRunRepositoryTest {
                 LocalDateTime.now(),
                         LocalDateTime.now().plusMinutes(30),
                 10,
-                Location.OUTDOOR,
-                null));
+                Location.OUTDOOR));
     }
 
 

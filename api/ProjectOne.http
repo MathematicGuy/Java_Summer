@@ -20,7 +20,6 @@ POST http://localhost:8080/api/runs/create
 Content-Type: application/json
 
 {
-  "id": 20,
   "title": "20th Run",
   "startedOn": "2004-07-13T12:00:00.000",
   "completedOn": "2004-07-30T13:00:00.000",
@@ -33,7 +32,6 @@ POST http://localhost:8080/api/runs/create
 Content-Type: application/json
 
 {
-  "id": 4,
   "title": "Fourth Run",
   "startedOn": "2030-01-03T12:00:00",
   "completedOn": "2024-01-03T13:00:00",
@@ -47,7 +45,6 @@ POST http://localhost:8080/api/runs/create
 Content-Type: application/json
 
 {
-  "id": 13,
   "title": "",
   "startedOn": "2004-07-13T12:00:00.000",
   "completedOn": "2004-07-30T13:00:00.000",
@@ -55,7 +52,7 @@ Content-Type: application/json
   "location": "OUTDOOR"
 }
 
-### Update Run
+### Update Run 1
 PUT http://localhost:8080/api/runs/update
 Content-Type: application/json
 
@@ -65,8 +62,20 @@ Content-Type: application/json
   "startedOn": "2004-07-13T12:00:00.000",
   "completedOn": "2004-07-30T13:00:00.000",
   "kilometers": 123,
-  "location": "OUTDOOR",
-  "version": 1
+  "location": "OUTDOOR"
+}
+
+### Update Run 2
+PUT http://localhost:8080/api/runs/update
+Content-Type: application/json
+
+{
+  "id": 6,
+  "title": "Sechs Run",
+  "startedOn": "2004-07-13T12:00:00.000",
+  "completedOn": "2004-07-30T13:00:00.000",
+  "kilometers": 20,
+  "location": "OUTDOOR"
 }
 
 ### Delete Run by id

@@ -1,15 +1,12 @@
 DROP TABLE IF EXISTS Run;
 
 CREATE TABLE IF NOT EXISTS Run(
-    id INT NOT NULL,
-    title varchar(250) NOT NULL,
-    started_on timestamp NOT NULL,
-    completed_on timestamp NOT NULL,
-    kilometers INT NOT NULL,
-    location varchar(10) NOT NULL,
-    version INT,
-    PRIMARY KEY (id)
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    started_on TIMESTAMP,
+    completed_on TIMESTAMP,
+    kilometers INTEGER,
+    location VARCHAR(255),
+    version INTEGER
 );
-
---     version INT NOT NULL,
 
